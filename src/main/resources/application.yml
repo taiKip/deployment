@@ -1,0 +1,5 @@
+server:
+  port: 8000
+  error:
+    include-binding-errors: always
+    include-message: always
