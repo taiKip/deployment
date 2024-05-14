@@ -15,7 +15,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserResponseDto createUser(UserRequestDto userRequestDto) {
-        return null;
+    public User createUser(UserRequestDto userRequestDto) {
+
+        User newUser = User.builder()
+                .email(userRequestDto.email())
+                .firstname(userRequestDto.firstname())
+                .lastname(userRequestDto.lastname())
+                .username(userRequestDto.username())
+                .build();
+        return userRepository.save(newUser);
     }
 }

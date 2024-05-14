@@ -1,4 +1,11 @@
 package com.example.githubactions.user;
 
-public record UserResponseDto() {
+import java.time.LocalDateTime;
+
+public record UserResponseDto(
+        String firstname,
+        String lastname,
+        String username,
+        String email
+) {
 }
