@@ -17,13 +17,18 @@ public class PostController {
 	private final PostService postService;
 
 	@PostMapping
-	public ResponseEntity<Post> createPost(@RequestBody @Valid PostRequestDto postRequestDto ) throws UserNotFoundException {
+	public ResponseEntity<Post> createPost(@RequestBody @Valid PostRequestDto postRequestDto) throws UserNotFoundException {
 		return ResponseEntity.ok(postService.createPost(postRequestDto));
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Post>> getPosts(){
+	public ResponseEntity<List<Post>> getPosts() {
 		return ResponseEntity.ok(postService.getPosts());
+	}
+
+	@GetMapping(path = {"/{id}"})
+	public ResponseEntity<Post> getPost(@PathVariable("id") Long id) throws PostNotFoundException {
+		return ResponseEntity.ok(postService.getPost(id));
 	}
 
 }

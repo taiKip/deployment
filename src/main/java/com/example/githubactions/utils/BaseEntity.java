@@ -1,6 +1,7 @@
 package com.example.githubactions.utils;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

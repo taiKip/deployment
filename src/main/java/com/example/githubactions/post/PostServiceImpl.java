@@ -35,4 +35,13 @@ Post newPost = Post.builder()
 	public List<Post> getPosts() {
 		return postRepository.findAll();
 	}
+
+	@Override
+	public Post getPost(Long id) throws PostNotFoundException {
+		Optional<Post> foundPost = postRepository.findById(id);
+		if(foundPost.isEmpty()){
+			throw new PostNotFoundException("Post not found");
+		}
+		return foundPost.get();
+	}
 }

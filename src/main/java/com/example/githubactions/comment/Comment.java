@@ -3,6 +3,7 @@ package com.example.githubactions.comment;
 import com.example.githubactions.post.Post;
 import com.example.githubactions.user.User;
 import com.example.githubactions.utils.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,9 +18,10 @@ public class Comment extends BaseEntity {
 	private String content;
 	@ManyToOne
 	@JoinColumn(name="user_id")
+	@JsonBackReference
 	private User userId;
 	@ManyToOne
-	@JoinColumn(name = "post_id")
+	@JsonBackReference
 	private Post postId;
 
 	public String getContent() {

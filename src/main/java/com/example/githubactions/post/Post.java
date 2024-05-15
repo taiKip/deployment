@@ -3,11 +3,15 @@ package com.example.githubactions.post;
 import com.example.githubactions.comment.Comment;
 import com.example.githubactions.user.User;
 import com.example.githubactions.utils.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,8 +25,10 @@ public class Post extends BaseEntity {
 	private String content;
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
+	@JsonBackReference
 	private User user;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "postId", fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private List<Comment> comments;
 
 	@Override

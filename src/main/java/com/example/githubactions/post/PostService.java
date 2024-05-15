@@ -11,4 +11,6 @@ public interface PostService {
 	Post createPost(PostRequestDto postRequestDto) throws UserNotFoundException;
 
 	List<Post> getPosts();
+
+	Post getPost(Long id) throws PostNotFoundException;
 }
